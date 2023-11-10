@@ -8,8 +8,8 @@ interface IToDoList {
 }
 
 export default function ToDoList({toDos, toggleToDo, deleteToDo}:IToDoList) {
-	return(
-		<>
+	return(<>
+
 		<h1 className="header">Todo List</h1>
 
 		<ul className="list">
@@ -22,6 +22,6 @@ export default function ToDoList({toDos, toggleToDo, deleteToDo}:IToDoList) {
 			})}
 
 		</ul>
-		</>
-	)
+		
+	</>)
 }

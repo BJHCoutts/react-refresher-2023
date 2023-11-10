@@ -6,11 +6,11 @@ import ToDoList from './components/ToDoList'
 
 export default function App() {
 
-  const [toDos, setToDos] = useState<[] | ToDo[]>([])
+  const [toDos, setToDos] = useState<ToDo[]>([])
 
   function addToDo(title:string) {
 
-    setToDos((prevToDos:[] | ToDo[]) => {
+    setToDos((prevToDos:ToDo[]) => {
 
       const newTodo: ToDo = {
         id: crypto.randomUUID(),
@@ -28,7 +28,7 @@ export default function App() {
   }
 
   function toggleToDo(id:string, completed:boolean) {
-    setToDos( (prevToDos) => {
+    setToDos( (prevToDos:ToDo[]) => {
       return (
         prevToDos.map(toDo => {
           if (toDo.id === id) {
@@ -41,7 +41,7 @@ export default function App() {
   }
 
   function deleteToDo(id:string) {
-    setToDos( (prevToDos) => {
+    setToDos( (prevToDos:ToDo[]) => {
       return(
       prevToDos.filter(toDo => toDo.id !== id)
     )})
