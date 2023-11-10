@@ -38,6 +38,13 @@ export default function App() {
     })
   }
 
+  function deleteToDo(id) {
+    setToDos( (prevToDos) => {
+      return(
+      prevToDos.filter(toDo => toDo.id !== id)
+    )})
+  }
+
   return (
     <>
       <form onSubmit={(e) => handleSubmit(e)} className='new-item-form'>
@@ -54,6 +61,8 @@ export default function App() {
       <h1 className="header">Todo List</h1>
 
       <ul className="list">
+
+        {toDos.length === 0 && "No ToDos, Please Add!"}
         {toDos.map( (toDo:ToDo) => {
           return (                
             <li key={toDo.id}>
@@ -61,7 +70,7 @@ export default function App() {
                 <input type="checkbox" checked={toDo.completed} onChange={e => toggleToDo(toDo.id, e.target.checked)} />
                 {toDo.title}
               </label>
-              <button className="btn btn-danger">Delete</button>
+              <button className="btn btn-danger" onClick={() => deleteToDo(toDo.id)}>Delete</button>
             </li>
           )
         })}
